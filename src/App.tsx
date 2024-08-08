@@ -4,7 +4,7 @@ import './index.css';
 function App() {
   return (
     <>
-      <h2>Holamundoooo23</h2>
+      <h2>Holam23</h2>
     </>
   );
 }
