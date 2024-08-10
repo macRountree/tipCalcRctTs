@@ -1,10 +1,10 @@
 import {useState} from 'react';
-import {MenuItem, OrderItem} from '../interfaces/index';
+import {MenuItems, OrderItem} from '../interfaces/index';
 export default function useOrder() {
   const [order, setOrder] = useState<OrderItem[]>([]);
   const [tip, setTip] = useState(0);
 
-  const addItem = (item: MenuItem) => {
+  const addItem = (item: MenuItems) => {
     //*Check if the item is already in the order */
 
     const itemExist = order.find(orderItem => orderItem.id === item.id);
@@ -18,11 +18,11 @@ export default function useOrder() {
     } else {
       const newTypeItem: OrderItem = {...item, quantity: 1}; //*This is a new item with a quantity of 1 */
 
-      setOrder([...order, newTypeItem]); //*...order is <OrderItem[] type> but item is <MenuItem>type */
+      setOrder([...order, newTypeItem]); //*...order is <OrderItem[] type> but item is <MenuItems>type */
     }
   };
 
-  const removeItem = (id: MenuItem['id']) => {
+  const removeItem = (id: MenuItems['id']) => {
     setOrder(order.filter(item => item.id !== id));
   };
 

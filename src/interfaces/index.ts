@@ -1,8 +1,8 @@
-export interface MenuItem {
+export interface MenuItems {
   id: number;
   name: string;
   price: number;
 }
-export interface OrderItem extends MenuItem {
+export interface OrderItem extends MenuItems {
   quantity: number;
 }

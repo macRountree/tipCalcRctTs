@@ -1,9 +1,9 @@
 import {formatCurrency} from '../helpers';
-import {MenuItem, OrderItem} from '../interfaces';
+import {MenuItems, OrderItem} from '../interfaces';
 
 interface OrderContentsProps {
   order: OrderItem[];
-  removeItem: (id: MenuItem['id']) => void;
+  removeItem: (id: MenuItems['id']) => void;
 }
 export const OrderContents = ({order, removeItem}: OrderContentsProps) => {
   return (
