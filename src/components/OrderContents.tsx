@@ -1,11 +1,17 @@
+import {Dispatch} from 'react';
 import {formatCurrency} from '../helpers';
-import {MenuItems, OrderItem} from '../interfaces';
+import {
+  // MenuItems,
+  OrderItem,
+} from '../interfaces';
+import {OrderActions} from '../reducers/orderReducer';
 
 interface OrderContentsProps {
   order: OrderItem[];
-  removeItem: (id: MenuItems['id']) => void;
+  dispatch: Dispatch<OrderActions>;
+  // removeItem: (id: MenuItems['id']) => void;
 }
-export const OrderContents = ({order, removeItem}: OrderContentsProps) => {
+export const OrderContents = ({order, dispatch}: OrderContentsProps) => {
   return (
     <div>
       <h2 className="text-4xl font-black text-center "> Consumption</h2>
@@ -28,7 +34,9 @@ export const OrderContents = ({order, removeItem}: OrderContentsProps) => {
 
             <button
               className=" bg-red-600 hover:bg-red-300 h-8 w-8 rounded-full text-white hover:text-red-600 font-black shadow-red-600"
-              onClick={() => removeItem(item.id)}
+              onClick={() =>
+                dispatch({type: 'remove-item', payload: {id: item.id}})
+              }
             >
               X
             </button>

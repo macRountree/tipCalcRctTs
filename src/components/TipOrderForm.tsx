@@ -1,3 +1,6 @@
+import {Dispatch} from 'react';
+import {OrderActions} from '../reducers/orderReducer';
+
 const tipOptions = [
   {
     id: 'tip-10',
@@ -16,11 +19,11 @@ const tipOptions = [
   },
 ];
 interface TipOrderFormProps {
-  setTip: React.Dispatch<React.SetStateAction<number>>;
+  dispatch: Dispatch<OrderActions>;
   tip: number;
 }
 
-export const TipOrderForm = ({tip, setTip}: TipOrderFormProps) => {
+export const TipOrderForm = ({tip, dispatch}: TipOrderFormProps) => {
   return (
     <div className="border-y border-dashed border-purple-400 p-5">
       <h3 className="font-black text-2xl">Tip:</h3>
@@ -36,7 +39,9 @@ export const TipOrderForm = ({tip, setTip}: TipOrderFormProps) => {
               name="tipOption"
               value={tipOption.value}
               className=" appearance-none w-4 h-4 rounded-full checked:bg-purple-800 border  border-purple-400  p-2"
-              onChange={e => setTip(+e.target.value)} //*On change, set the tipOption to the value of the radio button */
+              onChange={e =>
+                dispatch({type: 'add-tip', payload: {value: +e.target.value}})
+              } //*On change, set the tipOption to the value of the radio button */
               checked={tipOption.value === tip} //*If the value of the radio button is equal to the tip, then it is checked */
             />
           </div>
