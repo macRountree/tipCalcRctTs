@@ -27,7 +27,7 @@ export const OrderContents = ({order, dispatch}: OrderContentsProps) => {
                 {item.name} - {formatCurrency(item.price)}
               </p>
               <p className="font-black">
-                Cantidad: {item.quantity} -
+                Quantity: {item.quantity} -
                 {formatCurrency(item.price * item.quantity)}
               </p>
             </div>
